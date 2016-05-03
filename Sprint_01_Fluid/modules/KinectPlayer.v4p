@@ -1,0 +1,283 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta34.2.dtd" >
+   <PATCH nodename="D:\Dropbox\Rambert\Hek01_Fluid\modules\KinectPlayer.v4p" systemname="KinectPlayer" filename="D:\Dropbox\Rambert\Hek01_Fluid\modules\KinectPlayer.v4p" scrollx="0" scrolly="1080">
+   <BOUNDS type="Window" left="8550" top="2790" width="15900" height="10035">
+   </BOUNDS>
+   <PACK Name="imagepack" Version="0.1.0">
+   </PACK>
+   <PACK Name="addonpack" Version="34.1.0">
+   </PACK>
+   <NODE nodename="IOBox (Node)" componentmode="InABox" id="1" systemname="IOBox (Node)">
+   <BOUNDS type="Box" left="1560" top="5115" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1560" top="5115" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|RGB Texture|">
+   </PIN>
+   <PIN pinname="Input Node" slicecount="1" values="||">
+   </PIN>
+   </NODE>
+   <NODE systemname="Dir (File)" nodename="Dir (File)" componentmode="Hidden" id="8">
+   <BOUNDS type="Node" left="1560" top="1635" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Filenames" visible="1">
+   </PIN>
+   <PIN pinname="Mask" slicecount="1" visible="1" values="*.dds">
+   </PIN>
+   <PIN pinname="Directory" slicecount="1" visible="1" values="C:\Users\juid144\Desktop\PierreDancing">
+   </PIN>
+   <PIN pinname="Update" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="9" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="1560" top="270" width="1590" height="330">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1560" top="270" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="*_rgb.jpg">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="*.*">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="*.*">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="9" srcpinname="Output String" dstnodeid="8" dstpinname="Mask">
+   </LINK>
+   <NODE systemname="GetSlice (String)" nodename="GetSlice (String)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="1560" top="2445" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Index" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="8" srcpinname="Filenames" dstnodeid="11" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="23" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="5340" top="990" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5340" top="990" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Index">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="23" srcpinname="Y Output Value" dstnodeid="11" dstpinname="Index">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="26" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="570" top="6960" width="2445" height="1245">
+   </BOUNDS>
+   <BOUNDS type="Node" left="570" top="6960" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Input String" visible="1" slicecount="1" values="C:\_recording\0000048755_skeleton.txt">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="27" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="3435" top="660" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3435" top="660" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="C:\_recording">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="Directory">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Directory">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="27" srcpinname="Output String" dstnodeid="8" dstpinname="Directory">
+   </LINK>
+   <NODE systemname="OnOpen (VVVV)" nodename="OnOpen (VVVV)" componentmode="Hidden" id="29">
+   <BOUNDS type="Node" left="10800" top="3990" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Bang" visible="1">
+   </PIN>
+   <PIN pinname="Simulate" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE systemname="Reader (String)" filename="%VVVV%\lib\nodes\modules\String\Reader (String).v4p" nodename="Reader (String)" componentmode="Hidden" id="39">
+   <BOUNDS type="Node" left="9120" top="6585" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Filename" slicecount="1" visible="1" values="..\..\KinectRecorder\0000005184_skeleton.txt">
+   </PIN>
+   <PIN pinname="Read" slicecount="5" visible="1" values="0,0,0,0,0">
+   </PIN>
+   <PIN pinname="Content" visible="1">
+   </PIN>
+   <PIN pinname="Encoding" slicecount="1" values="Windows-1252">
+   </PIN>
+   <BOUNDS type="Box" left="9120" top="6585">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Separate (String)" nodename="Separate (String)" componentmode="Hidden" id="38">
+   <BOUNDS type="Node" left="9120" top="7080" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Intersperse" slicecount="1" values="NewLineAutoDetection">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="39" srcpinname="Content" dstnodeid="38" dstpinname="Input">
+   </LINK>
+   <NODE systemname="Separate (String)" nodename="Separate (String)" componentmode="Hidden" id="37">
+   <BOUNDS type="Node" left="9120" top="7800" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="Intersperse" slicecount="1" values="Comma">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="38" srcpinname="Output" dstnodeid="37" dstpinname="Input">
+   </LINK>
+   <NODE systemname="AsValue (String)" nodename="AsValue (String)" componentmode="Hidden" id="36">
+   <BOUNDS type="Node" left="9120" top="8265" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="37" srcpinname="Output" dstnodeid="36" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="35" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="9120" top="8940" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9120" top="8940" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="SkeletonXY">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="36" srcpinname="Output" dstnodeid="35" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="Substitute (String)" nodename="Substitute (String)" componentmode="Hidden" id="34">
+   <BOUNDS type="Node" left="9120" top="4575" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1" slicecount="284" values="D:\Dropbox\Rambert\KinectRecorder\0000005174_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005175_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005176_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005177_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005178_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005182_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005183_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005184_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005185_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005186_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005187_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005188_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005189_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005190_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005191_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005192_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005193_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005194_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005195_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005196_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005197_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005198_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005199_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005200_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005201_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005202_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005203_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005204_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005206_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005207_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005208_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005209_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005210_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005211_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005212_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005213_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005214_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005215_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005217_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005220_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005221_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005222_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005223_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005224_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005225_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005227_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005228_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005230_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005232_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005235_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005236_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005237_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005238_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005239_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005244_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005245_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005248_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005249_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005252_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005253_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005254_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005258_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005259_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005260_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005261_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005262_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005263_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005266_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005267_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005269_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005270_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005271_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005273_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005274_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005276_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005277_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005278_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005279_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005280_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005281_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005282_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005285_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005286_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005287_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005289_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005292_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005293_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005294_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005295_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005298_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005299_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005300_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005301_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005302_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005304_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005306_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005310_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005314_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005316_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005317_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005322_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005323_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005324_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005325_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005329_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005330_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005331_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005334_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005335_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005337_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005338_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005339_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005340_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005341_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005342_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005343_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005344_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005345_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005346_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005347_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005350_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005351_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005355_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005359_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005362_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005363_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005365_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005366_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005367_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005368_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005371_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005372_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005373_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005374_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005377_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005378_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005379_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005380_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005382_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005383_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005386_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005388_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005395_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005398_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005401_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005402_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005404_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005407_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005409_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005412_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005415_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005418_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005419_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005420_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005421_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005423_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005424_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005428_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005431_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005432_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005434_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005435_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005443_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005444_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005450_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005451_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005456_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005459_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005460_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005462_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005465_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005469_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005477_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005478_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005481_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005482_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005484_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005486_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005487_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005488_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005489_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005491_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005494_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005496_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005498_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005499_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005565_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005566_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005567_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005568_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005569_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005571_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005572_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005573_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005574_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005575_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005576_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005577_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005579_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005581_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005582_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005583_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005584_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005585_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005589_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005590_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005592_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005593_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005596_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005597_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005598_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005599_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005600_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005602_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005605_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005609_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005610_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005612_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005614_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005615_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005616_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005617_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005618_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005620_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005621_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005623_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005624_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005625_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005626_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005627_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005628_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005630_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005632_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005633_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005634_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005637_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005638_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005639_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005640_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005643_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005644_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005645_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005646_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005647_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005649_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005650_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005654_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005655_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005659_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005660_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005661_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005662_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005665_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005669_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005670_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005671_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005672_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005679_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005680_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005681_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005682_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005683_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005684_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005685_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005686_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005688_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005690_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005692_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005695_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005699_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005700_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005701_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005702_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005703_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005705_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005706_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005707_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005708_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005709_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005711_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005713_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005716_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005717_depth.dds,D:\Dropbox\Rambert\KinectRecorder\0000005718_depth.dds">
+   </PIN>
+   <PIN pinname="From" slicecount="1" visible="1" values="_rgb.jpg">
+   </PIN>
+   <PIN pinname="To" slicecount="1" visible="1" values="_skeletonXY.txt">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="34" srcpinname="Output" dstnodeid="39" dstpinname="Filename">
+   </LINK>
+   <NODE systemname="Change (String)" nodename="Change (String)" componentmode="Hidden" id="33">
+   <BOUNDS type="Node" left="9885" top="4980" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="OnChange" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="34" srcpinname="Output" dstnodeid="33" dstpinname="Input">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="32" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="3105" top="6960" width="2445" height="1245">
+   </BOUNDS>
+   <BOUNDS type="Node" left="3105" top="6960" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Input String" visible="1" slicecount="3" values="|-0.6398,-0.8401,3.3452&cr;&lf;-0.7262,-0.5917,3.3387&cr;&lf;-0.8087,-0.3461,3.3202&cr;&lf;-0.8858,-0.2666,3.3380&cr;&lf;-0.8685,-0.5298,3.2118&cr;&lf;-0.7067,-0.5071,3.0984&cr;&lf;-0.9024,-0.5768,3.2290&cr;&lf;-1.0227,-0.5756,3.3909&cr;&lf;-0.6696,-0.4232,3.2270&cr;&lf;-0.4861,-0.5382,3.2719&cr;&lf;-0.5385,-0.7517,3.2410&cr;&lf;-0.5627,-0.8824,3.2056&cr;&lf;-0.6810,-0.8549,3.2967&cr;&lf;-0.7089,-0.8516,2.8476&cr;&lf;-0.9239,-0.8256,3.2125&cr;&lf;-0.9138,-0.8675,3.0781&cr;&lf;-0.5876,-0.8107,3.3338&cr;&lf;-0.4613,-0.8048,2.7910&cr;&lf;-0.4846,-0.8719,3.2080&cr;&lf;-0.4783,-0.9132,3.0729&cr;&lf;-0.7887,-0.4074,3.3269&cr;&lf;-1.0113,-0.5475,3.3984&cr;&lf;-1.0036,-0.5443,3.3903&cr;&lf;-0.5618,-0.8909,3.2129&cr;&lf;-0.5594,-0.8771,3.1864|,,">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="34" srcpinname="Output" dstnodeid="32" dstpinname="Input String">
+   </LINK>
+   <NODE systemname="OR (Boolean)" nodename="OR (Boolean)" componentmode="Hidden" id="31">
+   <BOUNDS type="Node" left="9885" top="6150" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="33" srcpinname="OnChange" dstnodeid="31" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="31" srcpinname="Output" dstnodeid="39" dstpinname="Read">
+   </LINK>
+   <NODE systemname="OnOpen (VVVV)" nodename="OnOpen (VVVV)" componentmode="Hidden" id="30">
+   <BOUNDS type="Node" left="11130" top="5205" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Bang" visible="1">
+   </PIN>
+   <PIN pinname="Simulate" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="30" srcpinname="Bang" dstnodeid="31" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Output" dstnodeid="34" dstpinname="Input">
+   </LINK>
+   <NODE systemname="FileTexture (DX11 2d.Pooled)" filename="%VVVV%\packs\dx11\nodes\plugins\VVVV.DX11.Nodes.dll" nodename="FileTexture (DX11 2d.Pooled)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="1560" top="3690" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Texture Out" visible="1">
+   </PIN>
+   <PIN pinname="Filename" visible="1">
+   </PIN>
+   <PIN pinname="No Mips" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Keep In Memory" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Load In Background" slicecount="1" values="0">
+   </PIN>
+   <BOUNDS type="Box" left="1560" top="3690">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Texture Out" dstnodeid="1" dstpinname="Input Node">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Output" dstnodeid="0" dstpinname="Filename">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="41" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="6675" top="7335" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6675" top="7335" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Default" slicecount="1" values="text">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Output">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Output" dstnodeid="41" dstpinname="Input String">
+   </LINK>
+   </PATCH>
