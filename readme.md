@@ -13,7 +13,7 @@ Mária Júdová
 
 ## Sprint 02 ConnectAll
 
-![](Sprint_03_ConnectAll/_root_ConnectAll_preview.jpg?raw=true)
+![](Sprint_03_ConnectAll/_root_ConnectAll_Preview.jpg?raw=true)
 
 ## About Sprint
 Rambert has created a new residency for artists and creatives working with technology as a medium to experiment and develop their practice in close collaboration with Rambert’s dancers, choreographers and staff.
