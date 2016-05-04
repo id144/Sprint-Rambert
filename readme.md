@@ -9,7 +9,7 @@ Mária Júdová
 
 ## Sprint 01 Fluid
 
-![](Sprint_01_Fluid/_root_Preview.png?raw=true)
+![](Sprint_01_Fluid/_root_Fluid_Preview.jpg?raw=true)
 
 ## Sprint 02 ConnectAll
 
@@ -18,7 +18,10 @@ Mária Júdová
 ## About Sprint
 Rambert has created a new residency for artists and creatives working with technology as a medium to experiment and develop their practice in close collaboration with Rambert’s dancers, choreographers and staff.
 Project designed by Rambert and Caper and produced in collaboration with Alpha-ville.
+
 [http://www.rambert.org.uk/]
+
 [http://wearecaper.com/]
+
 [http://alpha-ville.co.uk]
   
